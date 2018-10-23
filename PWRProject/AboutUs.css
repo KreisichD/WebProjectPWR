@@ -1,0 +1,31 @@
+strong.sizeem {
+    font-size: 0.5em;
+}
+
+strong.sizepx {
+    font-size: 10px;
+}
+
+strong.sizept {
+    font-size: 10pt;
+}
+
+strong.sizeproc {
+    font-size: 50%;
+}
+
+body {
+    background-image: url(MediaFiles/logo.png);
+    background-attachment: fixed;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+p em {
+    font-size: 200%;
+}
+
+p > em {
+    color: deeppink;
+}
+

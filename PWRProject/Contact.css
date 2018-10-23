@@ -1,0 +1,5 @@
+body {
+    background-image: url(MediaFiles/logo.png);
+    background-color: gray;
+    background-repeat: repeat-y;
+}
