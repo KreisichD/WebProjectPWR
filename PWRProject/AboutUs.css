@@ -29,3 +29,16 @@ p > em {
     color: deeppink;
 }
 
+p.fontchanges {
+    font-weight: lighter;
+    font-style:italic;
+    font-variant: small-caps;
+    font-size:larger;
+    line-height: 120%;
+}
+
+p:empty {
+    background-color:lightblue;
+    height: 20px;
+    width: 1000px;
+}
