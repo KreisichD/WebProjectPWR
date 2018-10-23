@@ -7,15 +7,16 @@
     <meta name="author" content="D & P">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="MainLayout.css" />
 </head>
 <body>
     <div id="container">
-        <header>
-            <a href="index.html"><img src="MediaFiles/logo.png" alt="logo" /></a>
+        <header class="row">
+            <a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
         </header>
-        <nav>
-            <span><a href="Register.html">Register</a> or <a href="Settings.html">Login</a></span>
-            <ul>
+        <nav class="row">
+            <div class="off7 col1 mtopbottom"><a href="Register.html">Register</a> or <a href="Settings.html">Login</a></div>
+            <ul id="standardMenu" class="col8">
                 <li><a href="index.html">News</a></li>
                 <li><a href="CodeSite.html">Code Site</a></li>
                 <li>
@@ -42,14 +43,14 @@
             <p>
                 <label>
                     Last name:
-                    <input name="l_name" type="text" size="25"  required/>
+                    <input name="l_name" type="text" size="25" required />
                 </label>
             </p>
 
             <p>
                 <label>
                     Email adress:
-                    <input type="email" required/>(name@domain.com)
+                    <input type="email" required />(name@domain.com)
                 </label>
             </p>
 
@@ -106,7 +107,7 @@
             <p>
                 <label>
                     University:
-                    <input type="text" placeholder="select your university" list="universities" size="30"/>
+                    <input type="text" placeholder="select your university" list="universities" size="30" />
                     <datalist id="universities">
                         <option value="Politechnika Wroclawska">
                         <option value="Politechnika Warszawska">
