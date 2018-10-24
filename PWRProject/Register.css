@@ -1,0 +1,21 @@
+input:checked {
+    height: 50px;
+}
+
+input:disabled {
+    background-color:lightgray;
+}
+
+input:enabled {
+    background-color:lightpink;
+}
+
+input:focus {
+    background-color: deeppink;
+    border:dotted;
+    border-color: aqua;
+}
+
+input:required {
+    font-size: 150%;
+}
