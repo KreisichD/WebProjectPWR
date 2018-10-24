@@ -3,6 +3,7 @@ html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
+	color:black;
 }
 * {
 	-webkit-box-sizing: border-box;
@@ -19,14 +20,31 @@ body {
 	background-color:rgb(128, 128, 128);
 	margin:0;
 }
-#container {
-	border: 0.5px solid black;
-	width: 1170px;
-	padding: 20px 10px 20px 10px;
-	margin: 5px auto 5px auto;
-	background-color: #fff3ad;
-	height: 100%;
-	min-height: 700px;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+footer {
+	margin-top: 20px;
+	padding: 5px 20px;
+	background-color: #ffe200;
+	background-color: rgba(251, 217, 84, 0.72);
+	border-top:0.5px solid black;
+}
+details:before, details:after{
+	display:table;
+	content:' ';
 }
 header > a{
 	text-align:center;
@@ -104,13 +122,16 @@ header > a{
 	margin-left: -9.75px;
 	margin-right: -9.75px;
 }
-	.row:before, .row:after {
-		content: " ";
-		display: table;
-	}
-	.row:after {
-		clear: both;
-	}
+.row:before, .row:after {
+	content: " ";
+	display: table;
+}
+.row:before,.row:after {
+	clear: both;
+}
+.text-center{
+	text-align:center;
+}
 /*End of Grid Elements*/
 /*Menu design*/
 #standardMenu {
@@ -173,6 +194,205 @@ header > a{
 	display: block;
 }
 /*End of menu design*/
+/*Media for smaller screens*/
 
+.container {
+	width: 1170px;
+	border: 0.5px solid black;
+	padding: 20px 10px 0px 10px;
+	margin: 5px auto 5px auto;
+	background-color: #fff3ad;
+	height: 100%;
+	min-height: 700px;
+
+}
+.hiddenMenu span{
+	display:none;
+}
+@media all and (max-width: 768px){
+	.container {
+		width: 450px;
+		border: 0.5px solid black;
+		padding: 20px 10px 20px 10px;
+		margin: 5px auto 5px auto;
+		background-color: #fff3ad;
+		height: 100%;
+		min-height: 700px;
+	}
+
+	.hiddenMenu span {
+		display: block;
+		padding: 10px 8px;
+		border: 0.5px solid black;
+		background-color: #f0ff2c;
+	}
+	.hiddenMenu {
+		background-color: #ffe200;
+		background-color: rgba(251, 217, 84, 0.72);
+		text-align: center;
+		font-size: 1em;
+		height:100%;
+	}
+	#standardMenu {
+		display: none;
+		list-style: none;
+		position: absolute;
+		text-align: center;
+		width: 92.13px;
+		left: 99px;
+		z-index: 1;
+		background-color: transparent;
+		margin:0;
+		padding:0;
+	}
+	.hiddenMenu:hover #standardMenu {
+		display: block;
+		list-style: none;
+	}
+	#standardMenu > li {
+		display:block;
+		position:relative;
+		box-sizing:border-box;
+		width: 24.5%;
+		min-width: 92.13px;
+		min-height:39px;
+		border: 0.5px black solid;
+		font-size: 1em;
+		background-color: #f0ff2c;
+		padding-top:5px;
+		padding-bottom:5px;
+		margin-left:2px;
+		margin-right:auto;
+	}
+	
+
+	#standardMenu > li > a {
+		color: black;
+		text-decoration: none;
+		font-size: 1em;
+		display: block;
+	}
+	#standardMenu > li > ol {
+		display: none;
+		list-style: none;
+		position: absolute;
+		text-align: center;
+		width: 92.13px;
+		left: 89px;
+		top:-11px;
+		z-index: 1;
+		background-color: transparent;
+		margin:0;
+		padding:0;
+	}
+
+	#standardMenu > li > ol > li {
+		display:block;
+		box-sizing:border-box;
+		width: 24.5%;
+		min-width: 92.13px;
+		min-height:39px;
+		border: 0.5px black solid;
+		font-size: 1em;
+		background-color: #f0ff2c;
+		padding-top:5px;
+		padding-bottom:5px;
+		margin-left:2px;
+		margin-right:auto;
+	}
+
+	#standardMenu > li > ol > li > a {
+		font-size: 1em;
+		text-decoration: none;
+		color: black;
+		display: block;
+	}
+
+	#standardMenu > li:nth-child(3):hover > ol {
+		display: block;
+	}
+	.col1s, .col2s, .col3s, .col4s, .col5s, .col6s, .col7s, .col8s {
+		position: relative;
+		min-height: 1px;
+		padding-left: 10px;
+		padding-right: 10px;
+		float: left;
+	}
+
+	.col1s {
+		width: 12.5%;
+	}
+
+	.col2s {
+		width: 25%;
+	}
+
+	.col3s {
+		width: 37.5%;
+	}
+
+	.col4s {
+		width: 50%;
+	}
+
+	.col5s {
+		width: 62.5%;
+	}
+
+	.col6s {
+		width: 75%;
+	}
+
+	.col7s {
+		width: 87.5%;
+	}
+
+	.col8s {
+		width: 100%;
+	}
+
+	.off0s {
+		margin-left: 0;
+	}
+
+	.off1s {
+		margin-left: 12.5%;
+	}
+
+	.off2s {
+		margin-left: 25%;
+	}
+
+	.off3s {
+		margin-left: 37.5%;
+	}
+
+	.off4s {
+		margin-left: 50%;
+	}
+
+	.off5s {
+		margin-left: 62.5%;
+	}
+
+	.off6s {
+		margin-left: 75%;
+	}
+
+	.off7s {
+		margin-left: 87.5%;
+	}
+
+	.off8s {
+		margin-left: 100%;
+	}
+	.menuoffs {
+		width: 75%;
+		min-height: 39.4px;
+		float: left;
+		background-color: #ffe200;
+		background-color: rgba(251, 217, 84, 0.72);
+	}
+}
 
 

@@ -1,0 +1,18 @@
+﻿table, td, th, tr{
+	border:1px solid black;
+}
+table{
+	width:auto;
+}
+td{
+	width:25%;
+	text-align:center;
+	padding:10px;
+}
+th{
+	padding:10px;
+}
+table tr:nth-child(odd) {
+	background-color: #ffe200;
+	background-color: rgba(251, 217, 84, 0.72);
+}
