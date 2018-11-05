@@ -35,12 +35,19 @@ section,
 summary {
 	display: block;
 }
+header {
+	border: black 0.5px solid;
+	border-image-slice: 13 13 13 13;
+	border-image-width: 13px 13px 13px 13px;
+	border-image-repeat: repeat repeat;
+	border-image-source: url("https://mdn.mozillademos.org/files/6013/border-image-4.png");
+	background-image: radial-gradient(hsla(48, 95%, 66%, 0.72) 60%, #ffe200 40%);
+}
 footer {
 	margin-top: 20px;
 	padding: 5px 20px;
-	background-color: #ffe200;
-	background-color: rgba(251, 217, 84, 0.72);
-	border-top:0.5px solid black;
+	background-image: linear-gradient(to right, hsla(48, 95%, 66%, 0.72), #ffe200);
+	border-top: 0.5px solid black;
 }
 details:before, details:after{
 	display:table;
@@ -147,11 +154,15 @@ header > a{
 	float: left;
 	width: 16%;
 	text-align: center;
-	border: 0.5px black solid;
 	margin-left: 4%;
 	line-height: 170%;
 	font-size: 18px;
 	background-color: #f0ff2c;
+}
+li {
+	border: 0.5px black solid;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow:black 0.5px 0.5px inset;
 }
 #standardMenu > li > a{
 	color:black;
@@ -182,7 +193,6 @@ header > a{
 	min-height: 30px;
 	min-width: 184.5px;
 	text-align: center;
-	border: 0.5px solid black;
 }	
 #standardMenu > li > ol > li > a{
 	font-size:18px;
@@ -204,7 +214,6 @@ header > a{
 	background-color: #fff3ad;
 	height: 100%;
 	min-height: 700px;
-
 }
 .hiddenMenu span{
 	display:none;
