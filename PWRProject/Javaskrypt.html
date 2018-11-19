@@ -6,23 +6,39 @@
 	<meta name="keywords" content="Code, tutorial, blog, feed, social, playground">
 	<meta name="author" content="D & P">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="MainLayout.css" />
 	<title>JS</title>
 	
 </head>
 <body>
 	<div class="container">
-		Container
-		<pre>
-		<script type="text/javascript">
-			document.writeln('<div> TXT <button id="alert">CLICK ME</button ></div>');
-		</script>
-	</pre>
-
-		<p id="miejsce">  </p>
-
+		<header class="row">
+			<a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
+		</header>
+		<nav class="row">
+			<div class="off7 col1 mtopbottom"><a href="Register.html">Register</a> or <a href="Settings.html">Login</a></div>
+			<div class="col2s hiddenMenu">
+				<span class="col8s">Menu</span>
+				<ul id="standardMenu" class="col8">
+					<li><a href="index.html">News</a></li>
+					<li><a href="CodeSite.html">Code Site</a></li>
+					<li>
+						Links
+						<ol>
+							<li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+							<li><a href="https://github.com/KreisichD/WebProjectPWR" target="_blank">Our GitHub</a></li>
+							<li><a href="#">Dev tools reviews</a></li>
+						</ol>
+					</li>
+					<li><a href="AboutUs.html">About us</a></li>
+					<li><a href="Contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<div class="menuoffs"></div>
+		</nav>
+		<footer class="row">
+			<div class="col8 text-center"><img src="MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.</div>
+		</footer>
 	</div>
-
-
-	<script type="text/javascript" src="JSCombos.js"></script>
 </body>
 </html>
