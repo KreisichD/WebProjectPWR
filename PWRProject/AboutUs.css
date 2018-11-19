@@ -5,3 +5,16 @@
 body {
     background-color: #2F4F4F;
 }
+
+p {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.selected {
+    background-color: hotpink;
+}
+
+form > p {
+    margin: 2%;
+}
