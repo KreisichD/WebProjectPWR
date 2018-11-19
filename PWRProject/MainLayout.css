@@ -36,12 +36,7 @@ summary {
 	display: block;
 }
 header {
-	border: black 0.5px solid;
-	border-image-slice: 13 13 13 13;
-	border-image-width: 13px 13px 13px 13px;
-	border-image-repeat: repeat repeat;
-	border-image-source: url("https://mdn.mozillademos.org/files/6013/border-image-4.png");
-	background-image: radial-gradient(hsla(48, 95%, 66%, 0.72) 60%, #ffe200 40%);
+	background-image: linear-gradient(to left, hsla(48, 95%, 66%, 0.72), #ffe200);
 }
 footer {
 	margin-top: 20px;
@@ -122,8 +117,8 @@ header > a{
 	margin-left: 100%;
 }
 .mtopbottom {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: auto;
 }
 .row {
 	margin-left: -9.75px;
@@ -159,15 +154,15 @@ header > a{
 	font-size: 18px;
 	background-color: #f0ff2c;
 }
-li {
+ul li {
 	border: 0.5px black solid;
 	border-radius: 5px 5px 5px 5px;
 	box-shadow:black 0.5px 0.5px inset;
 	transition: box-shadow 0.5s;
 	transition-timing-function: linear;
 }
-li:hover{
-	box-shadow:red 3px 3px inset;
+ul li:hover{
+	box-shadow:red 0px 0px 4px 2px inset;
 }
 #standardMenu > li > a{
 	color:black;
@@ -214,11 +209,12 @@ li:hover{
 .container {
 	width: 1170px;
 	border: 0.5px solid black;
-	padding: 20px 10px 0px 10px;
-	margin: 5px auto 5px auto;
+	padding: 20px 10px 5px 10px;
+	margin-top:10px;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: #fff3ad;
 	height: 100%;
-	min-height: 700px;
 }
 .hiddenMenu span{
 	display:none;
