@@ -9,7 +9,7 @@
     <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="MainLayout.css" />
     <link rel="stylesheet" type="text/css" href="AboutUs.css" />
-
+    <script type="text/javascript" src="AboutUsPageSettings.js" ></script>
 </head>
 <body>
     <div class="container">
@@ -38,7 +38,7 @@
             <div class="menuoffs"></div>
         </nav>
 
-        <article>
+        <article id="toChange">
 
             <!--<h3>Spis tresci</h3>
 
@@ -54,6 +54,22 @@
                 <li><a href="#r9">Phasellus</a></li>
                 <li><a href="#r10">Duis elementum</a></li>
             </ol>-->
+
+            <div class="col2 off6" id="settings">
+                <form id="pageSettings" action="#">
+                    Background color: <input type="color" value="#2F4F4F" id="selectBackground"/><br />
+                    Font color: <input type="color" value="#000000" id="selectFontColor"/> <br />
+                    Font: <input type="text" list="fonts" id="selectFont"/> <br />
+                    <datalist id="fonts">
+                        <option value="Times New Roman" />
+                        <option value="Lucida Sans" />
+                        <option value="Comic Sans MS" />
+                    </datalist>
+                    <input type="submit" value="APPLY" />
+                    <input type="reset" value="RESET" />
+                </form>
+                <p id="helper"></p>
+            </div>
 
             <h1>Lorem ipsum <sup>20</sup><sub>18</sub></h1>
 
