@@ -43,9 +43,10 @@ function applyChanges(form) {
     var fontColor = form.elements["selectFontColor"];
     var font = form.elements["selectFont"];
 
-    document.body.setAttribute("style", "background-color: " + backgroundColor.value + "; font-family: " + font.value);
+    document.body.style.backgroundColor = backgroundColor.value;
+    document.body.style.fontFamily = font.value;
     
-    document.getElementById("toChange").setAttribute("style", "color: " + fontColor.value);
+    document.getElementById("toChange").style.color = fontColor.value;
 }
 
 window.addEventListener("load", start, false);

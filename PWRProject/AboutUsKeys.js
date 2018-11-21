@@ -5,11 +5,11 @@ function start() {
     document.addEventListener("keydown", function (e) {
         if (e.altKey && e.shiftKey && e.ctrlKey)
             if (!isChanged) {
-                toChange.setAttribute("style", "font-size: 50%");
+                toChange.style.fontSize = "50%";
                 isChanged = true;
             }
             else {
-                toChange.setAttribute("style", "font-size: 100%");
+                toChange.style.fontSize = "100%";
                 isChanged = false;
             }
     })
