@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Code Site</title>
 	<link rel="stylesheet" type="text/css" href="MainLayout.css" />
+	<link rel="stylesheet" type="text/css" href="Register.css" />
 </head>
 <body>
 	<div class="container">
@@ -15,7 +16,7 @@
 			<a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
 		</header>
 		<nav class="row">
-			<div class="off7 col1 mtopbottom"><a href="Register.html">Register</a> or <a href="Settings.html">Login</a></div>
+			<div class="off7 col1 mtopbottom"><a href="Register.html">Register</a> or <a href="Login.html">Login</a></div>
 			<div class="col2s hiddenMenu">
 				<span class="col8s">Menu</span>
 				<ul id="standardMenu" class="col8">
@@ -35,47 +36,28 @@
 			</div>
 			<div class="menuoffs"></div>
 		</nav>
-
-		<form method="post" action="#">
-			<div>
-				<label>
-					Color:
-					<input type="color" />
-
-				</label>
-			</div>
-			<div>
-				<label>
-					Month:
-					<input type="month" />
-
-				</label>
-			</div>
-			<div>
-				<label>
-					Range:
-					<input type="range" />
-
-				</label>
-			</div>
-			<div>
-				<label>
-					Search:
-					<input type="search" placeholder="Write on your searching phrase here" />
-
-				</label>
-			</div>
-			<div>
-				<label>
-					Your website:
-					<input type="url" placeholder="www.github.com" />
-
-				</label>
-			</div>
-			<button type="submit">Submit</button>
-			<button type="reset">Reset</button>
-		</form>
-		<footer class="row">
+		<div class="row">
+			<form method="post" action="#">
+				<div class="off3 col2 push3">
+					<div class="off1 col7">
+						E-mail:
+					</div>
+					<div class="col8 text-center">
+						<input type="text" size="25" />
+					</div>
+					<div class="off1 col7">
+						Password:
+					</div>
+					<div class="col8 text-center">
+						<input type="password" size="25" id="pwd" />
+					</div>
+					<div class="col8">
+						<button class="off2 col4 push2" type="submit">Log in!</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer class="row text-center">
 			<img src="MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.
 		</footer>
 	</div>
