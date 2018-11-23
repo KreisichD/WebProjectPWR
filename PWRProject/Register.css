@@ -1,21 +1,10 @@
-input:checked {
-    height: 50px;
+﻿div > div{
+	margin-top:15px;
 }
-
-input:disabled {
-    background-color:lightgray;
+.padded{
+	padding:3px;
 }
-
-input:enabled {
-    background-color:lightpink;
-}
-
-input:focus {
-    background-color: deeppink;
-    border:dotted;
-    border-color: aqua;
-}
-
-input:required {
-    font-size: 150%;
+select{
+	padding-top: 1.5px;
+	padding-bottom: 1.5px;
 }

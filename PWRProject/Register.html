@@ -38,134 +38,124 @@
 		</nav>
 
 		<form method="post" action="#" autocomplete="on">
-			<p>
-				<label>
-					First name:
-					<input name="f_name" type="text" size="25" autofocus />
-				</label>
-			</p>
+			<div class="row">
+				<div class="col4">
+					<div class="off1 col3">
+						First name:
+					</div>
+					<div class="col4">
+						<input name="f_name" type="text" size="25" autofocus />
+					</div>
 
-			<p>
-				<label>
-					Last name:
-					<input name="l_name" type="text" size="25" required />
-				</label>
-			</p>
+					<div class="off1 col3">
+						Last name:
+					</div>
+					<div class="col4">
+						<input name="l_name" type="text" size="25" required />
+					</div>
 
-			<p>
-				<label>
-					Email adress:
-					<input type="email" required />(name@domain.com)
-				</label>
-			</p>
+					<div class="off1 col3">
+						Date of birth:
+					</div>
+					<div class="col4">
+						<input name="d_date" type="text" size="1" />
+						<select name="m_date">
+							<optgroup label="winter">
+								<option>January</option>
+								<option>February</option>
+							</optgroup>
+							<optgroup label="Spring">
+								<option>March</option>
+								<option>April</option>
+								<option>May</option>
+							</optgroup>
+							<optgroup label="Summer">
+								<option>June</option>
+								<option>July</option>
+								<option>August</option>
+							</optgroup>
+							<optgroup label="Autumn">
+								<option>September</option>
+								<option>October</option>
+								<option>November</option>
+							</optgroup>
+							<optgroup label="yeah, winter again">
+								<option>December</option>
+							</optgroup>
+						</select>
+						<input name="y_date" type="text" size="3" />
+					</div>
+					<div class="off2 col2">
+						<input name="sex" type="radio" checked="checked" value="Female" />
+						Female
+					</div>
+					<div class="off1 col3">
+						<input name="sex" type="radio" value="Male" />
+						Male
+					</div>
+					<div class="off1 col3">
+						Email adress:
 
-			<p>
-				<label>
-					Phone number:
-					<input type="tel" pattern="[0-9]{3} [0-9]{3} [0-9]{3}" disabled />(### ### ###)
-				</label>
-			</p>
+					</div>
+					<div class="col4">
+						<input type="email" size="25" required />
+					</div>
+					<div class="off1 col3">
+						Phone number:
+					</div>
+					<div class="col4">
+						<input type="tel" size="25" pattern="[0-9]{3} [0-9]{3} [0-9]{3}" />
+					</div>
+					<div class="off1 col3">
+						University:
+					</div>
+					<div class="col4">
+						<input type="text" placeholder="select your university" list="universities" size="25" />
+						<datalist id="universities">
+							<option value="Politechnika Wroclawska">
+							<option value="Politechnika Warszawska">
+							<option value="Uniwersytet Warszawski">
+							<option value="Uniwersytet Wroclawski">
+							<option value="Politechnika Poznanska">
+							<option value="Akademia Gurniczo-Hutnicza">
+						</datalist>
+					</div>
+				</div>
 
-			<p>
-				Date of birth:
-				<input name="d_date" type="text" size="1" />
-
-				<select name="m_date">
-					<optgroup label="winter">
-						<option>January</option>
-						<option>February</option>
-					</optgroup>
-					<optgroup label="Spring">
-						<option>March</option>
-						<option>April</option>
-						<option>May</option>
-					</optgroup>
-					<optgroup label="Summer">
-						<option>June</option>
-						<option>July</option>
-						<option>August</option>
-					</optgroup>
-					<optgroup label="Autumn">
-						<option>September</option>
-						<option>October</option>
-						<option>November</option>
-					</optgroup>
-					<optgroup label="yeah, winter again">
-						<option>December</option>
-					</optgroup>
-				</select>
-
-				<input name="y_date" type="text" size="3" />
-			</p>
-
-			<p>
-				<label>
-					<input name="sex" type="radio" checked="checked" value="Female" />
-					Female
-				</label>
-				<label>
-					<input name="sex" type="radio" value="Male" />
-					Male
-				</label>
-			</p>
-
-			<p>
-				<label>
-					University:
-					<input type="text" placeholder="select your university" list="universities" size="30" />
-					<datalist id="universities">
-						<option value="Politechnika Wroclawska">
-						<option value="Politechnika Warszawska">
-						<option value="Uniwersytet Warszawski">
-						<option value="Uniwersytet Wroclawski">
-						<option value="Politechnika Poznanska">
-						<option value="Akademia Gurniczo-Hutnicza">
-					</datalist>
-				</label>
-			</p>
-
-			<p>
-				Which programming languages you know?<br />
-
-				<label>
-					<input name="lang" type="checkbox" value="c#" />
-					C#
-				</label>
-				( Popularity: <meter value="0.42">42%</meter> )
-				<br />
-
-				<label>
-					<input name="lang" type="checkbox" value="java" />
-					Java
-				</label>
-				( Popularity: <meter value="0.76">76%</meter> )
-				<br />
-
-				<label>
-					<input name="lang" type="checkbox" value="python" />
-					Python
-				</label>
-				( Popularity: <meter value="0.95">95%</meter> )
-				<br />
-
-				<label>
-					<input name="lang" type="checkbox" value="js" />
-					JavaScript
-				</label>
-				( Popularity: <meter value="0.1">10%</meter> )
-			</p>
-
-			<p>
-				<textarea name="about" rows="3" maxlength="200" cols="36" placeholder="Tell us sth about you..."></textarea>
-			</p>
-
-			<p>
-				<input type="submit" value="Send" />
-				<input type="reset" value="Clear" />
-			</p>
+				<div class="col4">
+					<div class="col8">
+						Which programming languages you know?
+					</div>
+					<div class="off1 col3">
+						<input name="lang" type="checkbox" value="c#" id="chash" />
+						<label for="chash">C#</label>
+					</div>
+					<div class="col4">
+						<input name="lang" type="checkbox" value="java" id="java" />
+						<label for="java">Java</label>
+					</div>
+					<div class="col3 off1">
+						<input name="lang" type="checkbox" value="python" id="py" />
+						<label for="py">Python</label>
+					</div>
+					<div class="col4">
+						<input name="lang" type="checkbox" value="javascript" id="js" />
+						<label for="js">JavaScript</label>
+					</div>
+					<div class="col8">
+						<textarea class="col7 push1" name="about" rows="9" maxlength="255" cols="36" placeholder="Tell us sth about you..."></textarea>
+					</div>
+				</div>
+				<div class="off1 col3">
+					<input class="off2 col6" type="submit" value="Send" />
+				</div>
+				<div class="col3 push1">
+					<input class="col6" type="reset" value="Clear" />
+				</div>
+			</div>
 		</form>
 
-		<footer class="row">
+		<footer class="row text-center">
 			<img src="MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.
 		</footer>
 	</div>
