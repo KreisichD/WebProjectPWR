@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PWRProject", "PWRProject\",
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "PHPWebProject1", "..\PHPWebProject1\PHPWebProject1\PHPWebProject1.phpproj", "{E3E12F48-B14C-4C51-B153-8830CD16867D}"
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "PHPWebProject1", "PHPWebProject1\PHPWebProject1\PHPWebProject1.phpproj", "{E3E12F48-B14C-4C51-B153-8830CD16867D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
