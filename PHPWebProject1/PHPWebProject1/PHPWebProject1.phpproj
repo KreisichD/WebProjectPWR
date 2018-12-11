@@ -17,5 +17,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="RegisterForm.php" />
+    <Compile Include="DBH.php" />
   </ItemGroup>
 </Project>

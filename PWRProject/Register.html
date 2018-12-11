@@ -44,7 +44,7 @@
 						First name:
 					</div>
 					<div class="col4">
-						<input name="f_name" type="text" size="25" autofocus />
+						<input name="f_name" type="text" size="25" autofocus required />
 					</div>
 
 					<div class="off1 col3">
@@ -58,7 +58,7 @@
 						Date of birth:
 					</div>
 					<div class="col4">
-						<select name="d_date" id="day">
+						<select name="d_date" id="day" required>
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -91,7 +91,7 @@
 							<option>30</option>
 							<option>31</option>
 						</select>
-						<select name="m_date">
+						<select name="m_date" required>
 							<optgroup label="winter">
 								<option>January</option>
 								<option>February</option>
@@ -115,7 +115,7 @@
 								<option>December</option>
 							</optgroup>
 						</select>
-						<select name="y_date" type="number" id="year">
+						<select name="y_date" type="number" id="year" required>
 							<option>2018</option>
 							<option>2017</option>
 							<option>2016</option>
@@ -206,13 +206,13 @@
 						Phone number:
 					</div>
 					<div class="col4">
-						<input type="tel" size="25" name="phone"/>
+						<input type="tel" size="25" name="phone" required/>
 					</div>
 					<div class="off1 col3">
 						University:
 					</div>
 					<div class="col4">
-						<input type="text" placeholder="select your university" name="university" list="universities" size="25" />
+						<input type="text" placeholder="select your university" name="university" list="universities" size="25" required />
 						<datalist id="universities">
 							<option value="Politechnika Wroclawska">
 							<option value="Politechnika Warszawska">
@@ -226,7 +226,7 @@
 						City:
 					</div>
 					<div class="col4">
-						<input type="text" name="city" size="25"/>
+						<input type="text" name="city" size="25" required/>
 					</div>
 				</div>
 

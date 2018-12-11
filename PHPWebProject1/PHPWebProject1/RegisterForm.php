@@ -1,3 +1,7 @@
+<?php
+include_once 'DBH.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,53 +18,52 @@
 		$university =   $_POST["university"];
 		$about =        $_POST["about"];
 		$city =         $_POST["city"];
-		if (!empty($_POST))
-			$langs =        $_POST["lang"];
+		if (!empty($_POST["lang"]))
+			$langs =    $_POST["lang"];
 	}
 	else{
 		die();
 	}
 	function verifyFirstName($fsname){
-		
+		return (preg_match("/\s|\W|\d/" ,$fsname));
 	}
 	function verifyLastName($nsname){
-
+		return (preg_match("/\s|[_;':,.}{[]]|\d/" ,$nsname));
 	}
 	function verifyDay($day, $month, $year){
-		
+		if ($month == "February"){
+			return $day>28;
+		}
+		if (in_array($month, ["April", "June", "September", "November"])){
+			return $day>30;
+		}
+		return $day>31;
 	}
 	function verifyEMail($semail){
-		
+		return !((preg_match("/[@]/", $semail)) and (preg_match("/[.]/", $semail)));
 	}
 	function verifyPhone($phonenr){
-		
+		return (preg_match("/[^0-9]/",$phonenr));
 	}
-	function verifyUni($uni){
-		
-	}
-
 	function verifyPostedData(){
 		$result = "";
 					if (empty($_POST)){
 						return ("<div class='off1 col3'>Please fill the register form</div>"."<div class='col4'><a href='/site/Register.html'>Register</a></div>");
 					}
 					if (verifyFirstName($GLOBALS['f_name'])){
-						$result=$result."\nPlease put there a legal first name (no spaces and numbers), legal digits(a-z '-')";
+						$result=$result."Please put there a legal first name (no spaces and numbers), legal digits(a-z '-') <br />";
 					}
 					if (verifyLastName($GLOBALS['l_name'])){
-						$result=$result."\nPlease put there a legal last name (no spaces and numbers), legal digits(a-z '-')";
+						$result=$result."Please put there a legal last name (no spaces and numbers), legal digits(a-z '-') <br />";
 					}
 					if (verifyDay($GLOBALS['date_d'], $GLOBALS['date_m'], $GLOBALS['date_y'])){
-						$result=$result."\nThere is no such day in this month/year";
+						$result=$result."There is no such day in this month/year <br />";
 					}
 					if (verifyEMail($GLOBALS['e_mail'])){
-						$result=$result."\nE-Mail should be like 'example@gmail.com";
+						$result=$result."E-Mail should be like 'example@gmail.com <br />";
 					}
 					if (verifyPhone($GLOBALS['phone'])){
-						$result=$result."\nPhone should have a nine-digits";
-					}
-					if (verifyUni($GLOBALS['university'])){
-						$result=$result."\nUniversity shouldn't containt special digits like {,\,/,} etc.";
+						$result=$result."Phone should have a nine-digits <br />";
 					}
 					if ($result==""){
 						$result="Given data is valid";
@@ -130,7 +133,7 @@
 		<div class="row">
 			<div class="off1 col7">
 				<?php		
-				  echo(verifyPostedData());
+				  print(verifyPostedData());
 				?>
 			</div>
 			<!--<div class="off1 col7">
@@ -149,6 +152,3 @@
 	</div>
 </body>
 </html>
-<?php
-die()
-?>
