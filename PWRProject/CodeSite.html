@@ -34,12 +34,12 @@ if(!isset($_COOKIE['background'])) {
 		</header>
 		<nav class="row">
 			<?php
-                if (!isset($_SESSION['active'])) {
-			        echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
-                } else {
-                    echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Logout.php\">Log out</a></div>";
-                }
-            ?>
+				if (!isset($_SESSION['active'])) {
+					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
+				} else {
+					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Logout.php\">Log out</a></div>";
+				}
+			?>
 			<div class="col2s hiddenMenu">
 				<span class="col8s">Menu</span>
 				<ul id="standardMenu" class="col8">
