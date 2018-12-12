@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -23,7 +27,13 @@ if(!isset($_COOKIE['background'])) {
 			<a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
 		</header>
 		<nav class="row">
-			<div class="off7 col1 mtopbottom"><a href="Register.html">Register</a> or <a href="Login.html">Login</a></div>
+			<?php
+                if (!isset($_SESSION['active'])) {
+			        echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
+                } else {
+                    echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Logout.php\">Log out</a></div>";
+                }
+            ?>
 			<div class="col2s hiddenMenu">
 				<span class="col8s">Menu</span>
 				<ul id="standardMenu" class="col8">
