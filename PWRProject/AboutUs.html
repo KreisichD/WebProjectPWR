@@ -9,11 +9,19 @@
     <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="MainLayout.css" />
     <link rel="stylesheet" type="text/css" href="AboutUs.css" />
-    <script type="text/javascript" src="AboutUsPageSettings.js"></script>
+    <!--<script type="text/javascript" src="AboutUsPageSettings.js"></script>-->
     <script type="text/javascript" src="AboutUsGenerate.js"></script>
     <script type="text/javascript" src="AboutUsKeys.js"></script>
+
 </head>
-<body>
+<?php 
+if(!isset($_COOKIE['background'])) {
+    echo "<body>";
+} else {
+    $color = $_COOKIE['background'];
+    echo "<body style=\"background-color: $color;\">";
+}
+?>
     <div class="container">
         <header class="row">
             <a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
@@ -39,9 +47,14 @@
             </div>
             <div class="menuoffs"></div>
         </nav>
-
-        <article id="toChange">
-
+<?php 
+if(!isset($_COOKIE['font'])) {
+    echo "<article id=\"toChange\">";
+} else {
+    $color = $_COOKIE['font'];
+    echo "<article style=\"color: $color;\" id=\"toChange\">";
+}
+?>
             <!--<h3>Spis tresci</h3>
 
             <ol>
@@ -58,9 +71,9 @@
             </ol>-->
 
             <div class="col2 off6" id="settings">
-                <form id="pageSettings" action="#">
-                    Background color: <input type="color" value="#2F4F4F" id="selectBackground" /><br />
-                    Font color: <input type="color" value="#000000" id="selectFontColor" /> <br />
+                <form id="pageSettings" method="post" action="savePreferences.php">
+                    Background color: <input type="color" value="#2F4F4F" id="selectBackground" name="background"/><br />
+                    Font color: <input type="color" value="#000000" id="selectFontColor" name="font" /> <br />
                     Font: <input type="text" list="fonts" id="selectFont" /> <br />
                     <datalist id="fonts">
                         <option value="Times New Roman" />

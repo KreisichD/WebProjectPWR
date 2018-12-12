@@ -10,7 +10,14 @@
 	<link rel="stylesheet" type="text/css" href="MainLayout.css" />
 	<link rel="stylesheet" type="text/css" href="Contact.css"/>
 </head>
-<body>
+<?php 
+if(!isset($_COOKIE['background'])) {
+    echo "<body>";
+} else {
+    $color = $_COOKIE['background'];
+    echo "<body style=\"background-color: $color;\">";
+}
+?>
 	<div class="container">
 		<header class="row">
 			<a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
