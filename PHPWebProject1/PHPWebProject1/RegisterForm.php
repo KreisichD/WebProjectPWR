@@ -5,7 +5,7 @@ include_once 'DBH.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<?php
+    <?php
 	if (!empty($_POST)){
 		$f_name =       $_POST["f_name"];
 		$l_name =       $_POST["l_name"];
@@ -66,14 +66,28 @@ include_once 'DBH.php';
 						$result=$result."Phone should have a nine-digits <br />";
 					}
 					if ($result==""){
-						$result="Given data is valid";
+						$result="Given data is valid <br />";
 					}
 					return $result;
 	}
+	function iSeeThatYouLike(){
+		$result = "I can see that you know ";
+		if (isset($GLOBALS['langs'])){
+            $langs = $GLOBALS['langs'];
+            foreach ($langs as &$veal){
+                $result = $result.$veal.'|';
+            }
+            $result = $result." that's amazing";
+        }
+        else{
+            $result = $result."nothing";
+        }
+        echo $result."<br />";
+    }
 	function addUserToDatabase(){
 
 	}
-	?>
+    ?>
 
 	<meta charset="utf-8" />
 	<meta name="description" content="Informations about authors" />
@@ -134,6 +148,7 @@ include_once 'DBH.php';
 			<div class="off1 col7">
 				<?php		
 				  print(verifyPostedData());
+				  iSeeThatYouLike();
 				?>
 			</div>
 			<!--<div class="off1 col7">

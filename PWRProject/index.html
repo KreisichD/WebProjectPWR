@@ -1,5 +1,5 @@
 ﻿<?php
-    session_start();
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +16,10 @@
 </head>
 <?php 
 if(!isset($_COOKIE['background'])) {
-    echo "<body>";
+	echo "<body>";
 } else {
-    $color = $_COOKIE['background'];
-    echo "<body style=\"background-color: $color;\">";
+	$color = $_COOKIE['background'];
+	echo "<body style=\"background-color: $color;\">";
 }
 ?>
 	<div class="container">
@@ -28,14 +28,14 @@ if(!isset($_COOKIE['background'])) {
 		</header>
 		<nav class="row">
 			<div class="col2 mtopbottom"><a href="Game.html">Let's play a game</a></div>
-            <div class="col2 mtopbottom"><a href="readCookies.php">Check cookies</a></div>
-            <?php
-                if (!isset($_SESSION['active'])) {
-			        echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
-                } else {
-                    echo "<div class=\"off5 col1 mtopbottom\"><a href=\"Logout.php\">Log out</a></div>";
-                }
-            ?>
+			<div class="off5 col1 mtopbottom" style="text-align:right;"><a href="readCookies.php">Check cookies</a></div>
+			<?php
+				if (!isset($_SESSION['active'])) {
+					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
+				} else {
+					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Logout.php\">Log out</a></div>";
+				}
+			?>
 			<div class="col2s hiddenMenu">
 				<span class="col8s">Menu</span>
 				<ul id="standardMenu" class="col8">
