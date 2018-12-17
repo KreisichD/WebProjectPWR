@@ -1,296 +1,233 @@
 ﻿<?php
 session_start();
+include_once 'DBH.php';
+if(isset($_SESSION['active']))
+    $empty = false;
+else
+    $empty = true;
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="description" content="Register yourself and join our community">
-	<meta name="keywords" content="Code, tutorial, blog, feed, social, playground">
-	<meta name="author" content="D & P">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Register</title>
-	<link rel="stylesheet" type="text/css" href="MainLayout.css" />
-	<link rel="stylesheet" type="text/css" href="Register.css" />
+    <meta charset="utf-8" />
+    <meta name="description" content="Register yourself and join our community">
+    <meta name="keywords" content="Code, tutorial, blog, feed, social, playground">
+    <meta name="author" content="D & P">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="MainLayout.css" />
+    <link rel="stylesheet" type="text/css" href="Register.css" />
 </head>
-<?php 
+<?php
 if(!isset($_COOKIE['background'])) {
-    echo "<body>";
+echo "<body>";
 } else {
-    $color = $_COOKIE['background'];
-    echo "<body style=\"background-color: $color;\">";
+$color = $_COOKIE['background'];
+echo "<body style=\"background-color: $color;\">";
 }
 ?>
-	<div class="container">
-		<header class="row">
-			<a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
-		</header>
-		<nav class="row">
-			<?php
-				if (!isset($_SESSION['active'])) {
-					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
-				} else {
-					echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Logout.php\">Log out</a></div>";
-				}
-			?>
-			<div class="col2s hiddenMenu">
-				<span class="col8s">Menu</span>
-				<ul id="standardMenu" class="col8">
-					<li><a href="index.html">News</a></li>
-					<li><a href="CodeSite.html">Code Site</a></li>
-					<li>
-						Links
-						<ol>
-							<li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
-							<li><a href="https://github.com/KreisichD/WebProjectPWR" target="_blank">Our GitHub</a></li>
-							<li><a href="#">Dev tools reviews</a></li>
-						</ol>
-					</li>
-					<li><a href="AboutUs.html">About us</a></li>
-					<li><a href="Contact.html">Contact</a></li>
-				</ul>
-			</div>
-			<div class="menuoffs"></div>
-		</nav>
-<?php 
-if(!isset($_COOKIE['font'])) {
-    echo "<div>";
-} else {
-    $color = $_COOKIE['font'];
-    echo "<div style=\"color: $color;\">";
-}
-?>
-		<form method="post" action="/php/RegisterForm.php" autocomplete="on">
-			<div class="row">
-				<div class="col4">
-					<div class="off1 col3">
-						First name:
-					</div>
-					<div class="col4">
-						<input name="f_name" type="text" size="25" autofocus required />
-					</div>
-
-					<div class="off1 col3">
-						Last name:
-					</div>
-					<div class="col4">
-						<input name="l_name" type="text" size="25" required />
-					</div>
-
-					<div class="off1 col3">
-						Date of birth:
-					</div>
-					<div class="col4">
-						<select name="d_date" id="day" required>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>
-							<option>8</option>
-							<option>9</option>
-							<option>10</option>
-							<option>11</option>
-							<option>12</option>
-							<option>13</option>
-							<option>14</option>
-							<option>15</option>
-							<option>16</option>
-							<option>17</option>
-							<option>18</option>
-							<option>19</option>
-							<option>20</option>
-							<option>21</option>
-							<option>22</option>
-							<option>23</option>
-							<option>24</option>
-							<option>25</option>
-							<option>26</option>
-							<option>27</option>
-							<option>28</option>
-							<option>29</option>
-							<option>30</option>
-							<option>31</option>
-						</select>
-						<select name="m_date" required>
-							<optgroup label="winter">
-								<option>January</option>
-								<option>February</option>
-							</optgroup>
-							<optgroup label="Spring">
-								<option>March</option>
-								<option>April</option>
-								<option>May</option>
-							</optgroup>
-							<optgroup label="Summer">
-								<option>June</option>
-								<option>July</option>
-								<option>August</option>
-							</optgroup>
-							<optgroup label="Autumn">
-								<option>September</option>
-								<option>October</option>
-								<option>November</option>
-							</optgroup>
-							<optgroup label="yeah, winter again">
-								<option>December</option>
-							</optgroup>
-						</select>
-						<select name="y_date" type="number" id="year" required>
-							<option>2018</option>
-							<option>2017</option>
-							<option>2016</option>
-							<option>2015</option>
-							<option>2014</option>
-							<option>2013</option>
-							<option>2012</option>
-							<option>2011</option>
-							<option>2010</option>
-							<option>2009</option>
-							<option>2008</option>
-							<option>2007</option>
-							<option>2006</option>
-							<option>2005</option>
-							<option>2004</option>
-							<option>2003</option>
-							<option>2002</option>
-							<option>2001</option>
-							<option>2000</option>
-							<option>1999</option>
-							<option>1998</option>
-							<option>1997</option>
-							<option>1996</option>
-							<option>1995</option>
-							<option>1994</option>
-							<option>1993</option>
-							<option>1992</option>
-							<option>1991</option>
-							<option>1990</option>
-							<option>1989</option>
-							<option>1988</option>
-							<option>1987</option>
-							<option>1986</option>
-							<option>1985</option>
-							<option>1984</option>
-							<option>1983</option>
-							<option>1982</option>
-							<option>1981</option>
-							<option>1980</option>
-							<option>1979</option>
-							<option>1978</option>
-							<option>1977</option>
-							<option>1976</option>
-							<option>1975</option>
-							<option>1974</option>
-							<option>1973</option>
-							<option>1972</option>
-							<option>1971</option>
-							<option>1970</option>
-							<option>1969</option>
-							<option>1968</option>
-							<option>1967</option>
-							<option>1966</option>
-							<option>1965</option>
-							<option>1964</option>
-							<option>1963</option>
-							<option>1962</option>
-							<option>1961</option>
-							<option>1960</option>
-							<option>1959</option>
-							<option>1958</option>
-							<option>1957</option>
-							<option>1956</option>
-							<option>1955</option>
-							<option>1954</option>
-							<option>1953</option>
-							<option>1952</option>
-							<option>1951</option>
-							<option>1950</option>
-
-						</select>
-					</div>
-					<div class="off2 col2">
-						<input name="sex" type="radio" checked="checked" value="Female" />
-						Female
-					</div>
-					<div class="off1 col3">
-						<input name="sex" type="radio" value="Male" />
-						Male
-					</div>
-					<div class="off1 col3">
-						Email adress:
-					</div>
-					<div class="col4">
-						<input type="email" name="mail" size="25" required />
-					</div>
-					<div class="off1 col3">
-						Phone number:
-					</div>
-					<div class="col4">
-						<input type="tel" size="25" name="phone" required/>
-					</div>
-					<div class="off1 col3">
-						University:
-					</div>
-					<div class="col4">
-						<input type="text" placeholder="select your university" name="university" list="universities" size="25" required />
-						<datalist id="universities">
-							<option value="Politechnika Wroclawska">
-							<option value="Politechnika Warszawska">
-							<option value="Uniwersytet Warszawski">
-							<option value="Uniwersytet Wroclawski">
-							<option value="Politechnika Poznanska">
-							<option value="Akademia Gurniczo-Hutnicza">
-						</datalist>
-					</div>
-					<div class="off1 col3">
-						City:
-					</div>
-					<div class="col4">
-						<input type="text" name="city" size="25" required/>
-					</div>
-				</div>
-
-				<div class="col4">
-					<div class="col8">
-						Which programming languages you know?
-					</div>
-					<div class="off1 col3">
-						<input name="lang[]" type="checkbox" value="c#" id="chash" />
-						<label for="chash">C#</label>
-					</div>
-					<div class="col4">
-						<input name="lang[]" type="checkbox" value="java" id="java" />
-						<label for="java">Java</label>
-					</div>
-					<div class="col3 off1">
-						<input name="lang[]" type="checkbox" value="python" id="py" />
-						<label for="py">Python</label>
-					</div>
-					<div class="col4">
-						<input name="lang[]" type="checkbox" value="javascript" id="js" />
-						<label for="js">JavaScript</label>
-					</div>
-					<div class="col8">
-						<textarea class="col7 push1" name="about" rows="11" maxlength="255" cols="36" placeholder="Tell us sth about you..."></textarea>
-					</div>
-				</div>
-				<div class="off1 col3">
-					<input class="off2 col6" type="submit" value="Send" />
-				</div>
-				<div class="col3 push1">
-					<input class="col6" type="reset" value="Clear" />
-				</div>
-			</div>
-		</form>
+<div class="container">
+    <header class="row">
+        <a href="index.html"><div class="col8"><img src="MediaFiles/logo.png" alt="logo" /></div></a>
+    </header>
+    <nav class="row">        
+        <?php
+        if (!isset($_SESSION['active'])) {
+        echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Register.html\">Register</a> or <a href=\"Login.html\">Login</a></div>";
+        } else {
+        echo "<div class=\"off7 col1 mtopbottom\" style=\"text-align:right;\"><a href=\"Logout.php\">Log out</a></div>";
+        }
+        ?>
+        <div class="col2s hiddenMenu">
+            <span class="col8s">Menu</span>
+            <ul id="standardMenu" class="col8">
+                <li><a href="index.html">News</a></li>
+                <li><a href="CodeSite.html">Code Site</a></li>
+                <li>
+                    Links
+                    <ol>
+                        <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                        <li><a href="https://github.com/KreisichD/WebProjectPWR" target="_blank">Our GitHub</a></li>
+                        <li><a href="#">Dev tools reviews</a></li>
+                    </ol>
+                </li>
+                <li><a href="AboutUs.html">About us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
         </div>
+        <div class="menuoffs"></div>
+    </nav>
+    <div>
+        <form method="post" action="RegisterForm.php" autocomplete="on">
+            <div class="row">
+                <div class="col4">
+                    <div class="off1 col3">
+                        First name:
+                    </div>
+                    <div class="col4">
+                        <input name="f_name" type="text" size="25" autofocus required value="Piotr" />
+                    </div>
 
-		<footer class="row text-center">
-			<img src="MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.
-		</footer>
-	</div>
+                    <div class="off1 col3">
+                        Last name:
+                    </div>
+                    <div class="col4">
+                        <input name="l_name" type="text" size="25" required />
+                    </div>
+
+                    <div class="off1 col3">
+                        Date of birth:
+                    </div>
+                    <div class="col4">
+                        <select name="d_date" id="day" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                        </select>
+                        <select name="m_date" required>
+                            <optgroup label="winter">
+                                <option>January</option>
+                                <option>February</option>
+                            </optgroup>
+                            <optgroup label="Spring">
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                            </optgroup>
+                            <optgroup label="Summer">
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                            </optgroup>
+                            <optgroup label="Autumn">
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                            </optgroup>
+                            <optgroup label="yeah, winter again">
+                                <option>December</option>
+                            </optgroup>
+                        </select>
+                        <select name="y_date" type="number" id="year" required value="2016">                            
+                            <?php
+                            $def_year;
+                            for ($i = 2018; $i >= 1950; $i--) {
+                            if ($i == $def_year)
+                            echo "<option selected=\"selected\">$i</option>";
+                            else
+                            echo "<option>$i</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="off2 col2">
+                        <input name="sex" type="radio" checked="checked" value="Female" />
+                        Female
+                    </div>
+                    <div class="off1 col3">
+                        <input name="sex" type="radio" value="Male" />
+                        Male
+                    </div>
+                    <div class="off1 col3">
+                        Email adress:
+                    </div>
+                    <div class="col4">
+                        <input type="email" name="mail" size="25" required />
+                    </div>
+                    <div class="off1 col3">
+                        Phone number:
+                    </div>
+                    <div class="col4">
+                        <input type="tel" size="25" name="phone" required />
+                    </div>
+                    <div class="off1 col3">
+                        University:
+                    </div>
+                    <div class="col4">
+                        <input type="text" placeholder="select your university" name="university" list="universities" size="25" required />
+                        <datalist id="universities">
+                            <option value="Politechnika Wroclawska">
+                            <option value="Politechnika Warszawska">
+                            <option value="Uniwersytet Warszawski">
+                            <option value="Uniwersytet Wroclawski">
+                            <option value="Politechnika Poznanska">
+                            <option value="Akademia Gurniczo-Hutnicza">
+                        </datalist>
+                    </div>
+                    <div class="off1 col3">
+                        Password:
+                    </div>
+                    <div class="col4">
+                        <input type="password" name="pass" size="25" required />
+                    </div>
+                </div>
+
+                <div class="col4">
+                    <div class="col8">
+                        Which programming languages you know?
+                    </div>
+                    <div class="off1 col3">
+                        <input name="lang[]" type="checkbox" value="c#" id="chash" />
+                        <label for="chash">C#</label>
+                    </div>
+                    <div class="col4">
+                        <input name="lang[]" type="checkbox" value="java" id="java" />
+                        <label for="java">Java</label>
+                    </div>
+                    <div class="col3 off1">
+                        <input name="lang[]" type="checkbox" value="python" id="py" />
+                        <label for="py">Python</label>
+                    </div>
+                    <div class="col4">
+                        <input name="lang[]" type="checkbox" value="javascript" id="js" />
+                        <label for="js">JavaScript</label>
+                    </div>
+                    <div class="col8">
+                        <textarea class="col7 push1" name="about" rows="11" maxlength="255" cols="36" placeholder="Tell us sth about you..."></textarea>
+                    </div>
+                </div>
+                <div class="off1 col3">
+                    <input class="off2 col6" type="submit" value="Send" />
+                </div>
+                <div class="col3 push1">
+                    <input class="col6" type="reset" value="Clear" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer class="row text-center">
+        <img src="MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.
+    </footer>
+</div>
 </body>
 </html>

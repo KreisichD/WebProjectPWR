@@ -66,7 +66,8 @@
 						$result=$result."Phone should have a nine-digits <br />";
 					}
 					if ($result==""){
-						$result="Given data is valid $pass<br />";
+                        $pass = $GLOBALS['pass'];
+						$result="Given data is valid $pass <br />";
 					}
 					return $result;
 	}

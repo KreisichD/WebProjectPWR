@@ -1,8 +1,25 @@
 <?php
+include_once 'DBH.php';
+
+$query = "SELECT E_mail, UsrPass FROM sysusers";
+
+if (!$conn)
+    die("<p>DB error</p>");
+
+if (!$result = mysqli_query($conn, $query))
+    die("<p>Query error</p>");
+
+
 $logins = array(
 	"piotrek" => "qwerty",
 	"damian" => "asd"
 	);
+
+while ($row = mysqli_fetch_row($result)) {
+    $logins[$row[0]] = $row[1];
+}
+
+mysqli_close($conn);
 
 $login = $_POST["login"];
 $pass = $_POST["pass"];
