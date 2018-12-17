@@ -21,12 +21,7 @@
 
 </head>
 <?php 
-if(!isset($_COOKIE['background'])) {
-    echo "<body>";
-} else {
-    $color = $_COOKIE['background'];
-    echo "<body style=\"background-color: $color;\">";
-}
+include 'setBackground.php';
 ?>
 	<div class="container">
 		<header class="row">
