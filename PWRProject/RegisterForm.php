@@ -197,6 +197,8 @@
 		mysqli_query($conn, $query);
 
         echo mysqli_error($conn);
+
+        $_SESSION['login'] = $GLOBALS['e_mail'];
     }
 	function loadActualValues($usermail){
 		$conn = $GLOBALS['conn'];
