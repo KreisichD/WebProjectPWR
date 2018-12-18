@@ -1,12 +1,8 @@
 <?php
-include_once 'DBH.php';
-?>
+	include_once 'DBH.php';
 
-<!DOCTYPE html>
-<html>
-<head>
-	<?php
-	$verification = false;
+	$verification;
+	$completed;
 	if (!empty($_POST)){
 		$f_name =       $_POST["f_name"];
 		$l_name =       $_POST["l_name"];
@@ -21,9 +17,12 @@ include_once 'DBH.php';
 		$pass =         $_POST["pass"];
 		if (!empty($_POST["lang"]))
 			$langs =    $_POST["lang"];
+
+		$GLOBALS['completed'] = true;
+        $GLOBALS['verification'] = false;
 	}
 	else{
-		die();
+		$GLOBALS['completed'] = false;
 	}
 	function verifyFirstName($fsname){
 		return (preg_match("/\s|\W|\d/" ,$fsname));
@@ -88,23 +87,23 @@ include_once 'DBH.php';
 		}
 		else{
 				return NULL;
-		}    
+		}
 		if (!$result = mysqli_query($conn, $query))
 			return NULL;
 		return $result;
 	}
 	function checkUniversity($university){
 		$conn = $GLOBALS['conn'];
-		
+
 		$query = 'SELECT UniversityId FROM universities WHERE UniversityName = ';
 		$query = $query.'\''.$university.'\'';
 		if (!$result = mysqli_query($conn, $query) or mysqli_num_rows($result)<=0)
 			return -1;
 
 		$i = mysqli_fetch_assoc($result);
-		
+
 		return $i['UniversityId'];
-			
+
 	}
 	function prepareDate(){
 		$year = $GLOBALS['date_y'];
@@ -114,128 +113,138 @@ include_once 'DBH.php';
 		$newDate = new DateTime($originalDate);
 		return $newDate->format('y-m-d');
 	}
-    function getUserId($mail){
-        $conn = $GLOBALS['conn'];
+	function getUserId($mail){
+		$conn = $GLOBALS['conn'];
 
-        $query = 'SELECT UserID FROM sysusers WHERE E_mail = '.'\''.$mail.'\'';
-        $result = mysqli_query($conn, $query);
-        return mysqli_fetch_assoc($result)['UserID'];
-    }
+		$query = 'SELECT UserID FROM sysusers WHERE E_mail = '.'\''.$mail.'\'';
+		$result = mysqli_query($conn, $query);
+		return mysqli_fetch_assoc($result)['UserID'];
+	}
 	function addUserToDatabase(){
 		$conn = $GLOBALS['conn'];
 
-        //checking university
+
+		//checking university
 		$university = $GLOBALS['university'];
 		$uniid = checkUniversity($university);
-		
+
 		if ($uniid === -1){
 			$query = 'INSERT INTO universities(UniversityId, UniversityName) VALUES (0,'.' \''.$university.'\''.')';
 			mysqli_query($conn, $query);
 			$uniid = checkUniversity($university);
 		}
-        //inserting user
+		//inserting user
 		$date = prepareDate();
 		$query = 'INSERT INTO sysusers
 		(UserID, E_mail, UsrPass, FirstName, LastName, DateOfBirth, Sex, PhoneNr, University, AboutMe)
 		VALUES (0, '.'\''.$GLOBALS['e_mail'].'\''.','.'\''.$GLOBALS['pass'].'\''.','.'\''.$GLOBALS['f_name'].'\''.'
 		,'.'\''.$GLOBALS['l_name'].'\''.','.'\''.$date.'\''.','.'\''.$GLOBALS['sex'].'\''.','.'\''.$GLOBALS['phone'].'\''.'
-		,'.$uniid.','.'\''.$GLOBALS['about'].'\''.')';
-        mysqli_query($conn, $query);
-        //inserting connections
-        $userid = getUserId($GLOBALS['e_mail']);
-        $result = getProgrammingLanguageId();
-        if ($result != NULL){
-            while($row = mysqli_fetch_row($result)){
-                $query = 'INSERT INTO knownlangs(ProgLangID, UsrID) VALUES (';
-                $query = $query.$row[0].', '.$userid.')';
-                mysqli_query($conn, $query);
-            }
-        }
+		,'.$uniid.','.'\''.addslashes($GLOBALS['about']).'\''.')';
+		mysqli_query($conn, $query);
+
+        echo mysqli_error($conn);
+
+		//inserting connections
+		$userid = getUserId($GLOBALS['e_mail']);
+		$result = getProgrammingLanguageId();
+		if ($result != NULL){
+			while($row = mysqli_fetch_row($result)){
+				$query = 'INSERT INTO knownlangs(ProgLangID, UsrID) VALUES (';
+				$query = $query.$row[0].', '.$userid.')';
+				mysqli_query($conn, $query);
+			}
+		}
 	}
-	?>
+    function updateUser(){
+        $conn = $GLOBALS['conn'];
 
-	<meta charset="utf-8" />
-	<meta name="description" content="Informations about authors" />
-	<meta name="keywords" content="Code, tutorial, blog, feed, social, playground" />
-	<meta name="author" content="D & P" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="/site/MainLayout.css" />
-	<title>User Created!</title>
-</head>
-<?php 
-include 'setBackground.php';
-?>
-	<div class="container">
-		<header class="row">
-			<a href="/site/index.html">
-				<div class="col8">
-					<img src="/site/MediaFiles/logo.png" alt="logo" />
-				</div>
-			</a>
-		</header>
-		<nav class="row">
-			<div class="off7 col1 mtopbottom">
-				<a href="/site/Register.html">Register</a> or
-				<a href="/site/Login.html">Login</a>
-			</div>
-			<div class="col2s hiddenMenu">
-				<span class="col8s">Menu</span>
-				<ul id="standardMenu" class="col8">
-					<li>
-						<a href="/site/index.html">News</a>
-					</li>
-					<li>
-						<a href="/site/CodeSite.html">Code Site</a>
-					</li>
-					<li>
-						Links
-						<ol>
-							<li>
-								<a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>
-							</li>
-							<li>
-								<a href="https://github.com/KreisichD/WebProjectPWR" target="_blank">Our GitHub</a>
-							</li>
-							<li>
-								<a href="#">Dev tools reviews</a>
-							</li>
-						</ol>
-					</li>
-					<li>
-						<a href="/site/AboutUs.html">About us</a>
-					</li>
-					<li>
-						<a href="/site/Contact.html">Contact</a>
-					</li>
-				</ul>
-			</div>
-			<div class="menuoffs"></div>
-		</nav>
-		<div class="row">
-			<div class="off1 col7">
-				<?php		
-				  print(verifyPostedData());
+        //retrieving updated values
+        $GLOBALS['f_name'] =       $_POST["f_name"];
+		$GLOBALS['l_name'] =       $_POST["l_name"];
+		$GLOBALS['date_d'] =       $_POST["d_date"];
+		$GLOBALS['date_m'] =       $_POST["m_date"];
+		$GLOBALS['date_y'] =       $_POST["y_date"];
+		$GLOBALS['sex'] =          $_POST["sex"];
+		$GLOBALS['e_mail'] =       $_POST["mail"];
+		$GLOBALS['phone'] =        $_POST["phone"];
+		$GLOBALS['university'] =   $_POST["university"];
+		$GLOBALS['about'] =        $_POST["about"];
+		$GLOBALS['pass'] =         $_POST["pass"];
 
-				  if ($GLOBALS['verification']){
-					  addUserToDatabase();
-				  }
+		//checking university
+		$university = $GLOBALS['university'];
+		$uniid = checkUniversity($university);
 
-				  mysqli_close($GLOBALS['conn']);
-				?>
-			</div>
-			<!--<div class="off1 col7">
-				Congratulations! You have created your own account!
-			</div>
-			<div class="off1 col7">
-				You password is:
-			</div>
-							-->
-		</div>
-		<footer class="row text-center">
-			<div class="col8 text-center">
-				<img src="/site/MediaFiles/logo.png" alt="logo_mini" width="15" height="15" /> D &amp; P &copy; 2018 D &amp; P. All rights reserved.
-			</div>
-		</footer>
-	</div>
-</body>
-</html>
+		if ($uniid === -1){
+			$query = 'INSERT INTO universities(UniversityId, UniversityName) VALUES (0,'.' \''.$university.'\''.')';
+			mysqli_query($conn, $query);
+			$uniid = checkUniversity($university);
+		}
+		//updating user
+		$date = prepareDate();
+		$query = 'UPDATE sysusers
+		SET E_mail = '.'\''.quotemeta($GLOBALS['e_mail']).'\''.'
+        , UsrPass = '.'\''.$GLOBALS['pass'].'\''.'
+        , FirstName = '.'\''.$GLOBALS['f_name'].'\''.'
+        , LastName = '.'\''.$GLOBALS['l_name'].'\''.'
+        , DateOfBirth = '.'\''.$date.'\''.'
+        , Sex = '.'\''.$GLOBALS['sex'].'\''.'
+        , PhoneNr = '.'\''.$GLOBALS['phone'].'\''.'
+        , University = '.'\''.$uniid.'\''.'
+        , AboutMe = '.'\''.addslashes($GLOBALS['about']).'\''.'
+        WHERE E_mail = '.'\''.quotemeta($_SESSION['login']).'\'';
+
+		mysqli_query($conn, $query);
+
+        echo mysqli_error($conn);
+    }
+	function loadActualValues($usermail){
+		$conn = $GLOBALS['conn'];
+		$query = 'SELECT * FROM sysusers JOIN universities ON sysusers.University = universities.UniversityId WHERE E_mail = '.'\''.$usermail.'\'';
+		$result = mysqli_query($conn, $query);
+		$assoc = mysqli_fetch_assoc($result);
+		$GLOBALS['f_name'] =       $assoc['FirstName'];
+		$GLOBALS['l_name'] =       $assoc["LastName"];
+		$GLOBALS['date_d'] =       date('j', strtotime($assoc["DateOfBirth"]));
+		$GLOBALS['date_m'] =       date('n', strtotime($assoc["DateOfBirth"]));
+		$GLOBALS['date_y'] =       date('Y', strtotime($assoc["DateOfBirth"]));
+		$GLOBALS['sex']    =       $assoc["Sex"];
+		$GLOBALS['e_mail'] =       $assoc["E_mail"];
+		$GLOBALS['phone']  =       $assoc["PhoneNr"];
+		$GLOBALS['university'] =   $assoc["UniversityName"];
+		$GLOBALS['about'] =        $assoc["AboutMe"];
+		$GLOBALS['pass']  =        $assoc["UsrPass"];
+	}
+	function setValue(&$value){
+	if (!$GLOBALS['empty'])
+		echo 'value="'.$value.'"';
+	}
+    function setMonth($month){
+        if (isset($GLOBALS['date_m']))
+            if ($GLOBALS['date_m'] == $month){
+                echo 'selected';
+            }
+    }
+    function setMale(){
+        if ($GLOBALS['sex'] = 'male'){
+            echo 'checked="checked"';
+        }
+        else{
+            echo '';
+        }
+
+    }
+    function setFemale(){
+        if (isset($GLOBALS['sex']))
+        {
+        if ($GLOBALS['sex'] = 'Female'){
+            echo 'checked="checked"';
+        }
+        else{
+            echo '';
+        }
+        }
+        else{
+            echo 'checked="checked"';
+        }
+    }
